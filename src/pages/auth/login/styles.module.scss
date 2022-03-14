@@ -1,0 +1,14 @@
+@import '/src/scss/global';
+
+.login-form {
+  &__input {
+    margin-bottom: 3rem;
+  }
+  &__button {
+    margin-bottom: .25rem;
+  }
+
+  @include breakpoint(md) {
+    max-width: 500px;
+  }
+}
