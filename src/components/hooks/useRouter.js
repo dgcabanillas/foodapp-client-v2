@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const useRouter = () => {
   const navigate = useNavigate();
 
-  const back  = useCallback(() => { navigate(-1) }, [])
+  const back  = useCallback(() => { navigate(-1) }, [navigate])
 
   const gotoHome      = useCallback(() => { navigate('/') }, [navigate])
 

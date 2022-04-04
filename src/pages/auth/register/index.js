@@ -14,7 +14,7 @@ import { useRouter } from "src/components/hooks/useRouter";
 import styles from './styles.module.scss';
 
 const Register = () => {
-  const { gotoLogin } = useRouter();
+  const { gotoLogin, gotoHome } = useRouter();
   const formik = useCustomFormik({ email: '', password: '', name: '', lastname: '' }, () => {});
 
   return (
@@ -40,7 +40,7 @@ const Register = () => {
         label="Contraseña"
         value={formik.values.password}
         onChange={formik.handleChange}
-        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+        placeholder="••••••••"
         className={styles['register-form__input']}
       />
       <Input 
@@ -70,6 +70,11 @@ const Register = () => {
         normalText={`¿Ya tienes una cuenta? `}
         linkText='Ingresa aquí'
         onClick={gotoLogin}
+      />
+      <AuthLink
+        normalText={`Regresar al `}
+        linkText='Inicio'
+        onClick={gotoHome}
       />
     </AuthForm>
   )

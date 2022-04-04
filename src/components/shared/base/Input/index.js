@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 const Input = ( props ) => {
   const { name, Icon, type, label, value, placeholder, onChange, className } = props;
-  const { open, toggle } = useToggle();
+  const { open, handleToggle } = useToggle();
 
   return (
     <div 
@@ -38,7 +38,7 @@ const Input = ( props ) => {
         />
         { type === 'password' && (
           <button 
-            onClick={toggle}
+            onClick={handleToggle}
             className={styles['input__toggle']}
           >{ open ? <VisibleOffIcon /> : <VisibleIcon /> }</button>
         )}

@@ -11,7 +11,7 @@ import Input    from "src/components/shared/base/Input";
 import styles from './styles.module.scss';
 
 const Recover = () => {
-  const { gotoLogin } = useRouter();
+  const { gotoLogin, gotoHome } = useRouter();
   const formik = useCustomFormik({ email: '' }, () => {});
 
   return (
@@ -39,6 +39,11 @@ const Recover = () => {
         normalText={`¿Recordaste tu contraseña? `}
         linkText='Ingresa aquí'
         onClick={gotoLogin}
+      />
+      <AuthLink
+        normalText={`Regresar al `}
+        linkText='Inicio'
+        onClick={gotoHome}
       />
     </AuthForm>
   )
