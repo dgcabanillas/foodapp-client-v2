@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 
 const Icon = ( props ) => {
-  const { width, height, fill, d } = props;
+  const { viewBox, width, height, fill, d } = props;
 
   return (
     <svg 
+      fill="none" 
       width={width} 
       height={height} 
-      viewBox="0 0 24 24" 
-      fill="none" 
+      viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path 
@@ -22,16 +22,15 @@ const Icon = ( props ) => {
 }
 
 Icon.defaultProps = {
-  width: 24,
-  height: 24,
   fill: "#503E9D",
 }
 
 Icon.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
   fill: PropTypes.string,
   d: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  viewBox: PropTypes.string.isRequired,
 }
 
 export default Icon;

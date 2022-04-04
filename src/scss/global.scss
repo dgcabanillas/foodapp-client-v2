@@ -1,9 +1,2 @@
 @import './colors';
 @import './mixins';
-
-html {
-  font-size: 12px;
-  @include breakpoint(md) {
-    font-size: 16px;
-  }
-}

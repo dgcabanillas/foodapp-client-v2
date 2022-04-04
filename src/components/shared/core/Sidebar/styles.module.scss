@@ -1,0 +1,41 @@
+@import 'src/scss/global';
+
+.Sidebar {
+  width: fit-content;
+
+  &__content {
+    padding: 0 8px;
+    max-width: 300px;
+    min-height: 100vh;
+    background-color: $gray;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  &--open {
+    width: 100vw;
+    flex-shrink: 0;
+    padding-right: 50px;
+    background: rgba(#000000, .25);
+
+    .Sidebar {
+      &__list {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+
+  @include breakpoint(lg) {
+    width: 300px;
+
+    &--open {
+      padding-right: 0;
+    }
+  }
+}
