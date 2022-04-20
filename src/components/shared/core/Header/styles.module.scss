@@ -1,0 +1,16 @@
+@import 'src/scss/global';
+
+.Header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  position: relative;
+
+  @include breakpoint(lg) {
+    &__menu {
+      flex-grow: 1;
+    }
+  }
+}

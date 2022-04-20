@@ -13,7 +13,7 @@ const getValidationSchema = (keys = []) => {
 
 export const useCustomFormik = (
   values = {}, 
-  callback = () => {}
+  callback = async () => {}
 ) => {
   const [errors, setErrors] = useState({});
   const keys = Object.keys(values);
