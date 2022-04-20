@@ -10,6 +10,10 @@ export const appReducer = (state, action) => {
       return { ...state, sidebarIsOpen: !state.sidebarIsOpen }
     case types.SET_SIDEBAR_INDEX:
       return { ...state, sidebarIndex: action.payload }
+    case types.OPEN_HEADER_MENU:
+      return { ...state, headerMenuIsOpen: true }
+    case types.CLOSE_HEADER_MENU:
+      return { ...state, headerMenuIsOpen: false }
     default: 
       return state;
   }

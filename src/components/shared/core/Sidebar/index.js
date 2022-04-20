@@ -10,6 +10,7 @@ import SettingsIcon from '../../icons/SettingsIcon';
 import CloseSidebarButton from './components/CloseSidebarButton';
 import FoodHubLogo from './components/FoodHubLogo';
 import SidebarItem from './components/SidebarItem';
+import AuthButton from './components/AuthButton';
 import styles from './styles.module.scss';
 
 const Sidebar = () => {
@@ -56,6 +57,7 @@ const Sidebar = () => {
             index="settings"
           />
         </ul>
+        <AuthButton />
       </div>
     </div>
   )

@@ -9,7 +9,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: 1rem;
     border-radius: .75rem;
     border: none;
     background: transparent;
@@ -44,8 +44,8 @@
     border: 2px solid white;
     border-radius: 50%;
     position: absolute;
-    top: 16px;
-    right: 12px;
+    top: 1rem;
+    right: .75rem;
   }
 
   &__counter {
