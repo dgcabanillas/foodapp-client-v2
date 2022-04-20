@@ -6,7 +6,7 @@ const MenuItemAddress = () => {
   return (
     <ListItemButton 
       title='Location'
-      text='San Francisco, California San Francisco, California'
+      text='San Francisco, California'
       IconCmp={LocationIcon}
     />
   )
