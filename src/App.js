@@ -10,17 +10,23 @@ import Login  from 'src/pages/auth/login';
 import Recover from "src/pages/auth/recover";
 import Register from "src/pages/auth/register";
 import AppState from "./components/context/app/app.state";
+import  Header  from "./components/shared/core/Header/index";
 
 function App() {
   return (
     <AuthState>
+      
     <AppState>
+    
       <BrowserRouter>
+      
         <Routes>
           <Route path="/" element={<HomeLayout />} >
+          <Route path ='/login' element={<Header/>}/> 
             <Route path="/" element={<Home />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
+            
             <Route path="login" element={<Login />} />
             <Route path="recover" element={<Recover />} />
             <Route path="register" element={<Register />} />

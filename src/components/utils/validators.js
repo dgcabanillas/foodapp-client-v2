@@ -18,15 +18,15 @@ const name =
     .string()
     .required('El nombre no puede ser vacío')
 
-const lastname =  
+const phoneNumber =  
   Yup
-    .string()
-    .required('El apellido no puede ser vacío')
+    .number()
+    .required('EL número celular no puede ser vacío')
   
 
 export const validator = {
   email,
   password,
   name,
-  lastname
+  phoneNumber
 }

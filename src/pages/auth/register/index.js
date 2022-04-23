@@ -10,12 +10,49 @@ import MailIcon     from "src/components/shared/icons/MailIcon";
 import KeyIcon      from "src/components/shared/icons/KeyIcon";
 
 import { useRouter } from "src/components/hooks/useRouter";
-
+import Swal from 'sweetalert2';
 import styles from './styles.module.scss';
+import PhoneNumberIcon from "src/components/shared/icons/PhoneNumberIcon";
 
 const Register = () => {
   const { gotoLogin, gotoHome } = useRouter();
-  const formik = useCustomFormik({ email: '', password: '', name: '', lastname: '' }, () => {});
+  const formik = useCustomFormik({ name:'',email: '', password: '', phoneNumber: '' }, () => {});
+
+  const clickRegister =async () => {
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name:formik.values.email,
+          email: formik.values.email,
+          password:formik.values.password,
+          phoneNumber:formik.values.phoneNumber
+         })
+    };
+
+    try {
+      const response = await fetch(`http://localhost:7789/signup`, requestOptions);
+      const data = await response.json();
+
+      console.log(response)
+      console.log(data)
+      if(response.status ==200){
+        Swal.fire('Credentials',`usuario creado`,'success');
+        gotoLogin();
+      }
+      else if(response.status ==400){
+        Swal.fire('Credentials', 'El correo ya existe','warning');
+      }else{
+        Swal.fire('Credentials', 'Campos vacíos o correco incorrecto','error');
+      }
+      
+    } catch (error) {
+      Swal.fire('Credentials', 'Email o password incorrectos','error');
+    }
+
+  }
+
 
   return (
     <AuthForm 
@@ -24,6 +61,15 @@ const Register = () => {
       onSubmit={formik.handleSubmit}
       className={styles['register-form']}
     >
+      <Input 
+        name="name" 
+        Icon={<ProfileIcon />}
+        label="Nombres y apellidos"
+        value={formik.values.name}
+        onChange={formik.handleChange}
+        placeholder="John Doe"
+        className={styles['register-form__input']}
+      />
       <Input 
         name="email" 
         Icon={<MailIcon />}
@@ -44,26 +90,17 @@ const Register = () => {
         className={styles['register-form__input']}
       />
       <Input 
-        name="name" 
-        Icon={<ProfileIcon />}
-        label="Nombres"
-        value={formik.values.name}
+        name="phoneNumber" 
+        Icon={<PhoneNumberIcon />}
+        label="Numero Celular"
+        value={formik.values.phoneNumber}
         onChange={formik.handleChange}
-        placeholder="John"
-        className={styles['register-form__input']}
-      />
-      <Input 
-        name="lastname" 
-        Icon={<ProfileIcon />}
-        label="Apellidos"
-        value={formik.values.lastname}
-        onChange={formik.handleChange}
-        placeholder="Doe"
+        placeholder="969870875"
         className={styles['register-form__input']}
       />
       <Button 
         text='Crear cuenta'
-        onClick={() => {}} 
+        onClick={clickRegister} 
         className={styles['register-form__button']}
       />
       <AuthLink 
