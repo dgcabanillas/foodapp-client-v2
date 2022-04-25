@@ -1,0 +1,79 @@
+.title{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: normal;
+}
+.card-img{
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.buttonDetail{
+  background-color: darkslateblue;
+  color: white;
+  text-align: left;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: auto;
+  float: right;
+
+}
+
+.container{
+  cursor: pointer;
+  box-shadow: 0 0 5px 0;
+}
+
+.card{
+  align-content: center;
+  border: 1px solid grey;
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  width: 30%;
+  height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  grid-gap: 30px;
+
+
+}
+
+.card p {
+  padding: 5px;
+  text-align: center;
+}
+
+.card img{
+  max-height: 170px;
+  height: auto;
+  width: auto;
+  display: inline-block;
+
+}
+
+.image{
+  text-align: center;
+}
+
+@media screen and (min-width:590px){
+
+  .image{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media screen and (min-width:960px){
+
+  .image{
+    grid-template-columns: repeat(3,1fr);
+  }
+}

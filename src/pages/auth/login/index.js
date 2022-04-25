@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useCustomFormik } from "src/components/hooks/useCustomFormik";
 import { useRouter } from "src/components/hooks/useRouter";
 
@@ -10,10 +11,28 @@ import Input    from "src/components/shared/base/Input";
 
 import styles from './styles.module.scss';
 import { classNames } from "src/components/utils/classNames";
+import { loginService } from "src/components/services/auth/loginService";
 
 const Login = () => {
   const { gotoRegister, gotoRecover, gotoHome } = useRouter();
-  const formik = useCustomFormik({ email: '', password: '' }, () => {});
+  const formik = useCustomFormik({ email: '', password: '' }, () => { loginUser(); });
+
+  const loginUser = () => {
+    loginService(
+      {
+        email: formik.values.email, 
+        password: formik.values.password
+      }, 
+      (response) => {
+        if (response.status === "success") {
+          gotoHome();
+        }
+        else{
+          Swal.fire("Credentials", response.error, "error");
+        }
+      }
+    )
+  }
 
   return (
     <AuthForm 
@@ -27,6 +46,7 @@ const Login = () => {
         Icon={<MailIcon />}
         label="Correo electrónico"
         value={formik.values.email}
+        error={formik.errors.email}
         onChange={formik.handleChange}
         placeholder="example@email.com"
         className={styles['login-form__input']}
@@ -37,14 +57,16 @@ const Login = () => {
         Icon={<KeyIcon />}
         label="Contraseña"
         value={formik.values.password}
+        error={formik.errors.password}
         onChange={formik.handleChange}
-        placeholder="••••••••"
+        placeholder="********"
         className={styles['login-form__input']}
       />
       <Button 
         text='Ingresar' 
         variant="light" 
-        onClick={() => {}} 
+        onClick={() => { console.log(formik.errors); }} 
+        type="submit"
         className={styles['login-form__button']}
       />
       <Button 

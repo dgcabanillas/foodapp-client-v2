@@ -6,7 +6,7 @@ import VisibleOffIcon from 'src/components/shared/icons/VisibleOffIcon';
 import styles from './styles.module.scss';
 
 const Input = ( props ) => {
-  const { name, Icon, type, label, value, placeholder, onChange, className } = props;
+  const { name, Icon, type, label, value, error, placeholder, onChange, className } = props;
   const { open, handleToggle } = useToggle();
 
   return (
@@ -42,13 +42,15 @@ const Input = ( props ) => {
             className={styles['input__toggle']}
           >{ open ? <VisibleOffIcon /> : <VisibleIcon /> }</button>
         )}
+        { error && ( <span  className={styles['input__error']} >{ error }</span> )}
       </div>
     </div>
   )
 }
 
 Input.defaultProps = {
-  type: 'text'
+  type: 'text',
+  error: ''
 }
 
 Input.propTypes = {
@@ -57,6 +59,7 @@ Input.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  error: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }

@@ -10,6 +10,7 @@ import Login  from 'src/pages/auth/login';
 import Recover from "src/pages/auth/recover";
 import Register from "src/pages/auth/register";
 import AppState from "./components/context/app/app.state";
+import Validate from "./pages/validate";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeLayout />} >
             <Route path="/" element={<Home />} />
+            <Route path="validate" element={<Validate />} />
+            <Route path="validate/:key" element={<Validate />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
             <Route path="login" element={<Login />} />

@@ -12,9 +12,11 @@ import FoodHubLogo from './components/FoodHubLogo';
 import SidebarItem from './components/SidebarItem';
 import AuthButton from './components/AuthButton';
 import styles from './styles.module.scss';
+import { useRouter } from 'src/components/hooks/useRouter';
 
 const Sidebar = () => {
   const { sidebarIsOpen } = useContext(AppContext);
+  const { gotoHome } = useRouter();
 
   return (
     <div className={classNames({
@@ -29,6 +31,7 @@ const Sidebar = () => {
             text="Inicio"
             Icon={<HomeIcon />}
             index="home"
+            handleClick={() => gotoHome()}
           />
           <SidebarItem
             text="Explorar"
