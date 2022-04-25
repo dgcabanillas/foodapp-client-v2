@@ -9,6 +9,13 @@ const getValidationSchema = (keys = []) => {
     return schema;
   }, {});
 }
+/* const getValidationSchema1 = (keys = []) => {
+  return keys.reduce((schema, key) => {
+    schema[key] = validatorLogin[key];
+    return schema;
+  }, {});
+}; */
+
 
 
 export const useCustomFormik = (
@@ -22,11 +29,15 @@ export const useCustomFormik = (
     initialValues: values,
     validationSchema: Yup.object(getValidationSchema(keys)),
     onSubmit: async (args) => {
+      const response = await callback(args);
+      console.log(response);
       const { data, errors } = await callback(args);
       setErrors( errors );
       console.log(data, errors);
     }
+    
   })
+  //console.log(`{FORMIKKK${formik.values.password}`);
 
   const handleChange = (e) => {
     formik.handleChange (e);
