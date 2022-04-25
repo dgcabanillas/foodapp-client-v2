@@ -22,11 +22,17 @@ const lastname =
   Yup
     .string()
     .required('El apellido no puede ser vacío')
+
+const phoneNumber =  
+  Yup
+    .string()
+    .required('Es necesario un número telefónico')
   
 
 export const validator = {
   email,
   password,
   name,
-  lastname
+  lastname,
+  phoneNumber
 }
